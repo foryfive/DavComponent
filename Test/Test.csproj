@@ -78,5 +78,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DavComponent\DavComponent.csproj">
+      <Project>{01b3da39-a8d0-4f7d-b512-065d02eba2cb}</Project>
+      <Name>DavComponent</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

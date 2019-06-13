@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DavComponent</id>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <title>DavComponent</title>
     <authors>David Lora</authors>
     <owners>David Lora</owners>
@@ -11,7 +11,10 @@
     <iconUrl>https://img.icons8.com/color/344/c-drive.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Componentes para c#</description>
-    <releaseNotes></releaseNotes>
+    <releaseNotes>
+      Se agrego {DavForm}, un formulario moderno.
+      Solo tiene que heredar de DavComponet.DavForm.
+    </releaseNotes>
     <copyright>Copyright 2019</copyright>
     <tags></tags>
   </metadata>

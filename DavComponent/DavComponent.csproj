@@ -43,6 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DavForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DavForm.designer.cs">
+      <DependentUpon>DavForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DavMaskedTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -50,6 +56,11 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DavForm.resx">
+      <DependentUpon>DavForm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
