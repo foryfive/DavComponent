@@ -2,13 +2,13 @@
 <package >
   <metadata>
     <id>DavComponent</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <title>DavComponent</title>
     <authors>David Lora</authors>
     <owners>David Lora</owners>
-    <licenseUrl></licenseUrl>
-    <projectUrl></projectUrl>
-    <iconUrl></iconUrl>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/foryfive/DavComponent</projectUrl>
+    <iconUrl>https://img.icons8.com/color/344/c-drive.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Componentes para c#</description>
     <releaseNotes></releaseNotes>
@@ -16,6 +16,6 @@
     <tags></tags>
   </metadata>
   <files>
-    <file src="DavComponent\bin\Release\DavComponent.dll" target="DavComponent\lib\net46\DavComponent.dll" />
+    <file src="DavComponent\bin\Release\DavComponent.dll" target="lib\net40"  />
   </files>
 </package>
