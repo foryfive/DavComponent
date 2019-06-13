@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>DavComponent</id>
+    <version>1.0.0</version>
+    <title>DavComponent</title>
+    <authors>David Lora</authors>
+    <owners>David Lora</owners>
+    <licenseUrl></licenseUrl>
+    <projectUrl></projectUrl>
+    <iconUrl></iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Componentes para c#</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2019</copyright>
+    <tags></tags>
+  </metadata>
+  <files>
+    <file src="DavComponent\bin\Release\DavComponent.dll" target="DavComponent\lib\net46\DavComponent.dll" />
+  </files>
+</package>
