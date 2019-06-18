@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DavComponent</id>
-    <version>1.0.2</version>
+    <version>1.0.5</version>
     <title>DavComponent</title>
     <authors>David Lora</authors>
     <owners>David Lora</owners>
@@ -12,8 +12,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Componentes para c#</description>
     <releaseNotes>
-      Se agrego {DavForm}, un formulario moderno.
-      Solo tiene que heredar de DavComponet.DavForm.
+     Mejora rendimiento DavForm
     </releaseNotes>
     <copyright>Copyright 2019</copyright>
     <tags></tags>

@@ -8,39 +8,67 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using System.Runtime.InteropServices;
+
 namespace DavComponent
 {
+
     public partial class DavForm : Form
     {
-        public bool Z_Maximizar { get; set; } = false;
+        private double opa = 0;
+        System.Timers.Timer timer = new System.Timers.Timer();
+
         public DavForm()
         {
             InitializeComponent();
         }
-        
-        protected override void OnShown(EventArgs e)
+        private void DavForm_Load(object sender, EventArgs e)
         {
-            Thread hilo = new Thread(new ThreadStart(Mostrando));
-            hilo.Start();
-            Mostrando();
-            base.OnShown(e);
+            if (Z_Maximizar)
+            {
+                toolTip1.SetToolTip(panelHeader, "Doble click para maximizar, minimizar.");
+            }
+            LblTitulo.Text = this.Text;
+            timer.Elapsed += Timer_Elapsed;
+            timer.Interval = 100;
+            timer.Start();
         }
+
+        private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            opa += 1;
+            this.Invoke(new MethodInvoker(() => { Opacity = opa; }));
+            if (opa >= 1)
+                timer.Stop();
+        }
+
+        public bool PrimeraVez { get; set; } = true;
+        public bool Z_Maximizar { get; set; } = false;
+
         protected override void OnActivated(EventArgs e)
         {
+            //if (PrimeraVez)
+            //{
+            //    double opa = 0;
+            //    Task.Factory.StartNew(() =>
+            //    {
+
+            //        while (true)
+            //        {
+            //            opa += 0.1;
+            //            this.Invoke(new MethodInvoker(() => { Opacity = opa; }));
+            //            if (opa >= 1)
+            //                break;
+            //        }
+
+
+            //    });
+            //    PrimeraVez = false;
+            //}
+
+
+
             base.OnActivated(e);
-        }
-        private void Mostrando()
-        {
-            this.Invoke(new MethodInvoker(() =>
-            {
-                while (true)
-                {
-                    this.Opacity += 0.1;
-                    if (this.Opacity == 1)
-                        break;
-                    Thread.Sleep(500);
-                }
-            }));
         }
 
         private const int WM_NCHITTEST = 0x84;
@@ -81,10 +109,14 @@ namespace DavComponent
         {
             get
             {
+
                 m_aeroEnabled = CheckAeroEnabled();
                 CreateParams cp = base.CreateParams;
                 if (!m_aeroEnabled)
-                    cp.ClassStyle |= CS_DROPSHADOW; return cp;
+                    cp.ClassStyle |= CS_DROPSHADOW;
+
+                return cp;
+
             }
         }
         private bool CheckAeroEnabled()
@@ -117,7 +149,7 @@ namespace DavComponent
                 default: break;
             }
             base.WndProc(ref m);
-            if (m.Msg == WM_NCHITTEST && (int)m.Result == HTCLIENT) m.Result = (IntPtr)HTCAPTION;
+            //if (m.Msg == WM_NCHITTEST && (int)m.Result == HTCLIENT) m.Result = (IntPtr)HTCAPTION;
         }
 
         private int xClick = 0, yClick = 0;
@@ -154,14 +186,7 @@ namespace DavComponent
             }
         }
 
-        private void DavForm_Load(object sender, EventArgs e)
-        {
-            if (Z_Maximizar)
-            {
-                toolTip1.SetToolTip(panelHeader, "Doble click para maximizar ho minimizar.");
-            }
-            LblTitulo.Text = this.Text;
-        }
+      
 
         private void PanelHeader_MouseMove(object sender, MouseEventArgs e)
         {

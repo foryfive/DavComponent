@@ -28,20 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.davButton1 = new Test.DavButton();
             this.SuspendLayout();
+            // 
+            // davButton1
+            // 
+            this.davButton1.Location = new System.Drawing.Point(41, 96);
+            this.davButton1.Name = "davButton1";
+            this.davButton1.Size = new System.Drawing.Size(150, 63);
+            this.davButton1.TabIndex = 1;
+            this.davButton1.Text = "davButton1";
+            this.davButton1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(957, 450);
+            this.Controls.Add(this.davButton1);
             this.Name = "Form1";
+            this.Opacity = 1D;
             this.Text = "Hola";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Controls.SetChildIndex(this.davButton1, 0);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private DavButton davButton1;
     }
 }
 

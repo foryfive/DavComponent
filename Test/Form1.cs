@@ -16,5 +16,15 @@ namespace Test
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            new Form1().Show(this);
+        }
     }
 }
