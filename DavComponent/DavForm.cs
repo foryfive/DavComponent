@@ -15,6 +15,12 @@ namespace DavComponent
 
     public partial class DavForm : Form
     {
+        private bool Maximizado { get; set; }
+        private int Ancho { get; set; }
+        private int Alto { get; set; }
+        public bool PrimeraVez { get; set; } = true;
+        public bool ZMaximizar { get; set; } = false;
+
         private double opa = 0;
         System.Timers.Timer timer = new System.Timers.Timer();
 
@@ -24,7 +30,7 @@ namespace DavComponent
         }
         private void DavForm_Load(object sender, EventArgs e)
         {
-            if (Z_Maximizar)
+            if (ZMaximizar)
             {
                 toolTip1.SetToolTip(panelHeader, "Doble click para maximizar, minimizar.");
             }
@@ -32,8 +38,23 @@ namespace DavComponent
             timer.Elapsed += Timer_Elapsed;
             timer.Interval = 100;
             timer.Start();
+            Ancho = this.Width;
+            Alto = this.Height;
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                this.WindowState = FormWindowState.Normal;
+                this.Location = new Point(0, 0);
+                ZMaximizar = true;
+                var rectangle = ScreenRectangle();
+                Size = new Size(rectangle.Width - 1, rectangle.Height - 25);
+                Location = new Point(0, 0);
+                Maximizado = true;
+            }
         }
-
+        public Rectangle ScreenRectangle()
+        {
+            return Screen.FromControl(this).Bounds;
+        }
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             opa += 1;
@@ -42,8 +63,7 @@ namespace DavComponent
                 timer.Stop();
         }
 
-        public bool PrimeraVez { get; set; } = true;
-        public bool Z_Maximizar { get; set; } = false;
+
 
         protected override void OnActivated(EventArgs e)
         {
@@ -177,27 +197,40 @@ namespace DavComponent
 
         private void PanelHeader_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (Z_Maximizar)
+            if (ZMaximizar)
             {
-                if (this.WindowState == FormWindowState.Normal)
-                    this.WindowState = FormWindowState.Maximized;
+                if (this.Width == Ancho)
+                {
+                    var rectangle = ScreenRectangle();
+                    Size = new Size(rectangle.Width - 1, rectangle.Height - 25);
+                    Location = new Point(0, 0);
+                    Maximizado = true;
+                }
                 else
-                    this.WindowState = FormWindowState.Normal;
+                {
+                    var rectangle = ScreenRectangle();
+                    Size = new Size(Ancho, Alto);
+                    Location = new Point(Ancho / 2, Alto / 2);
+                    Maximizado = false;
+                }
             }
         }
 
-      
+
 
         private void PanelHeader_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.Button != MouseButtons.Left)
+            if (!Maximizado)
             {
-                xClick = e.X; yClick = e.Y;
-            }
-            else
-            {
-                this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick);
+                if (e.Button != MouseButtons.Left)
+                {
+                    xClick = e.X; yClick = e.Y;
+                }
+                else
+                {
+                    this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick);
 
+                }
             }
         }
     }

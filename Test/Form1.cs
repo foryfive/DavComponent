@@ -19,10 +19,20 @@ namespace Test
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+           
+        }
+       
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            new Form1().Show(this);
         }
 
-        private void Button3_Click(object sender, EventArgs e)
+        private void DavButton2_Click(object sender, EventArgs e)
+        {
+            davButton1.Enabled = !davButton1.Enabled;
+        }
+
+        private void DavButton2_Click_1(object sender, EventArgs e)
         {
             new Form1().Show(this);
         }

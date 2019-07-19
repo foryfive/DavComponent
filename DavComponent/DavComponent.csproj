@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DavButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DavForm.cs">
       <SubType>Form</SubType>
     </Compile>
